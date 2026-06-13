@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = import.meta.env.VITE_API_URL || 'https://splitly-backend-r70u.onrender.com/api';
 
 const getHeaders = () => {
   const token = localStorage.getItem('token');

@@ -80,7 +80,7 @@ export default function GroupDetails({ groupId, currentUser, onBack }) {
       }).catch(err => console.error(err));
 
       // 2. Connect socket
-      socketRef.current = io('http://localhost:5000');
+      socketRef.current = io(import.meta.env.VITE_WS_URL || 'https://splitly-backend-r70u.onrender.com');
       
       socketRef.current.on('connect', () => {
         socketRef.current.emit('join_expense', { expenseId: activeExpense.id });
