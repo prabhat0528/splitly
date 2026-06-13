@@ -15,9 +15,9 @@ We analyzed the core behavior of Splitwise to identify the minimum viable produc
 - **Social Loop**: Discussing billing issues requires context. Shared expense comments act as a micro-thread for each bill.
 
 ### Core Workflows Identified
-1. **User Lifecycle**: Account creation $\rightarrow$ Joining/Creating groups $\rightarrow$ Searching for friends to join.
-2. **Expense Lifecycle**: Creating an expense $\rightarrow$ Choosing split details $\rightarrow$ Live comments discussion $\rightarrow$ Settle up / recording payment $\rightarrow$ Ledger update.
-3. **Settlement Lifecycle**: Identifying pairwise debt $\rightarrow$ Recording payment $\rightarrow$ Recalculating balances.
+1. **User Lifecycle**: Account creation -> Joining/Creating groups -> Searching for friends to join.
+2. **Expense Lifecycle**: Creating an expense -> Choosing split details -> Live comments discussion -> Settle up / recording payment -> Ledger update.
+3. **Settlement Lifecycle**: Identifying pairwise debt -> Recording payment -> Recalculating balances.
 
 ### Product Assumptions Made
 - **Single Payer**: To keep the database transactions simple, we assumed a single user pays for the entire bill.
@@ -84,7 +84,7 @@ We designed a clean, normalized relational database layout:
 ## 4. Tradeoffs & Simplifications
 
 ### What We Simplified
-- **Simplified Debts Solver**: We used a greedy matching algorithm ( debtor balances matching creditor balances) to simplify debts. Although not guaranteed to find the absolute mathematically optimal minimal subset of transactions in 100% of complex multi-party edge cases, it resolves debts correctly in $O(N \log N)$ time.
+- **Simplified Debts Solver**: We used a greedy matching algorithm ( debtor balances matching creditor balances) to simplify debts. Although not guaranteed to find the absolute mathematically optimal minimal subset of transactions in 100% of complex multi-party edge cases, it resolves debts correctly.
 - **State Management**: We used standard React `useState` and `useEffect` state triggers. This kept our bundle light and responsive without adding the complexity of Redux or Zustand.
 
 ### What We Hardcoded / Avoided
